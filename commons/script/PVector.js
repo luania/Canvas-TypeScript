@@ -8,28 +8,34 @@ define(["require", "exports"], function (require, exports) {
         PVector.prototype.add = function (p) {
             this.x += p.x;
             this.y += p.y;
+            return this;
         };
         PVector.prototype.sub = function (p) {
             this.x -= p.x;
             this.y -= p.y;
+            return this;
         };
         PVector.prototype.mult = function (n) {
             this.x *= n;
             this.y *= n;
+            return this;
         };
         PVector.prototype.div = function (n) {
             this.x /= n;
             this.y /= n;
+            return this;
         };
         PVector.prototype.mag = function () {
             return Math.sqrt(this.x * this.x + this.y * this.y);
         };
         PVector.prototype.normalize = function () {
             this.div(this.mag());
+            return this;
         };
         PVector.prototype.setMag = function (mag) {
             this.normalize();
             this.mult(mag);
+            return this;
         };
         PVector.add = function (p1, p2) {
             return new PVector(p1.x + p2.x, p1.y + p2.y);

@@ -8,21 +8,25 @@ export class PVector {
     add(p: PVector) {
         this.x += p.x;
         this.y += p.y;
+        return this;
     }
 
     sub(p: PVector) {
         this.x -= p.x;
         this.y -= p.y;
+        return this;
     }
 
     mult(n: number) {
         this.x *= n;
         this.y *= n;
+        return this;
     }
 
     div(n: number) {
         this.x /= n;
         this.y /= n;
+        return this;
     }
 
     mag() {
@@ -31,11 +35,13 @@ export class PVector {
 
     normalize() {
         this.div(this.mag());
+        return this;
     }
 
     setMag(mag: number) {
         this.normalize();
         this.mult(mag);
+        return this;
     }
 
     static add(p1: PVector, p2: PVector) {
