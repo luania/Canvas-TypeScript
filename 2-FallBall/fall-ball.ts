@@ -13,7 +13,7 @@ function next() {
     ball.step();
     ball.checkBounds(canvas);
     ctx.beginPath();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.arc(ball.position.x, ball.position.y, ball.size, 0, 2 * Math.PI);
     ctx.fill();
     setTimeout(next, 0);
