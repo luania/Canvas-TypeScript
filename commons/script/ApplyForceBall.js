@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "./Ball"], function (require, exports, Ball_1) {
+define(["require", "exports", "./PVector", "./Ball"], function (require, exports, PVector_1, Ball_1) {
     "use strict";
     var ApplyForceBall = (function (_super) {
         __extends(ApplyForceBall, _super);
@@ -17,7 +17,7 @@ define(["require", "exports", "./Ball"], function (require, exports, Ball_1) {
             return this;
         };
         ApplyForceBall.prototype.applyForce = function (force) {
-            this.acceleration.add(force.div(this.mass));
+            this.acceleration.add(PVector_1.PVector.div(force, this.mass));
             return this;
         };
         return ApplyForceBall;

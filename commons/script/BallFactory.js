@@ -6,23 +6,23 @@ define(["require", "exports", "./PVector", "./ApplyForceBall"], function (requir
         BallFactory.prototype.centerBalls = function (canvas) {
             var ball1 = new ApplyForceBall_1.ApplyForceBall(new PVector_1.PVector(canvas.width / 2, canvas.height / 2), 10)
                 .setSpeed(new PVector_1.PVector(0, 0))
-                .setMass(100)
+                .setMass(10)
                 .setColor("rgba(80, 80, 200, 0.5)");
             var ball2 = new ApplyForceBall_1.ApplyForceBall(new PVector_1.PVector(canvas.width / 2, canvas.height / 2), 10)
                 .setSpeed(new PVector_1.PVector(0, 0))
-                .setMass(150)
+                .setMass(15)
                 .setColor("rgba(80, 200, 80, 0.5)");
             var ball3 = new ApplyForceBall_1.ApplyForceBall(new PVector_1.PVector(canvas.width / 2, canvas.height / 2), 10)
                 .setSpeed(new PVector_1.PVector(0, 0))
-                .setMass(200)
+                .setMass(20)
                 .setColor("rgba(200, 80, 80, 0.5)");
             var ball4 = new ApplyForceBall_1.ApplyForceBall(new PVector_1.PVector(canvas.width / 2, canvas.height / 2), 10)
                 .setSpeed(new PVector_1.PVector(0, 0))
-                .setMass(250)
+                .setMass(25)
                 .setColor("rgba(200, 200, 80, 0.5)");
             var ball5 = new ApplyForceBall_1.ApplyForceBall(new PVector_1.PVector(canvas.width / 2, canvas.height / 2), 10)
                 .setSpeed(new PVector_1.PVector(0, 0))
-                .setMass(300)
+                .setMass(30)
                 .setColor("rgba(200, 80, 200, 0.5)");
             return [ball1, ball2, ball3, ball4, ball5];
         };

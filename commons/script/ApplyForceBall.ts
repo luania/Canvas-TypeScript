@@ -8,7 +8,7 @@ export class ApplyForceBall extends Ball {
         return this;
     }
     applyForce(force: PVector) {
-        this.acceleration.add(force.div(this.mass));
+        this.acceleration.add(PVector.div(force, this.mass));
         return this;
     }
 }
