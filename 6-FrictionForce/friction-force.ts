@@ -10,17 +10,25 @@ const FRICTION_CONST: number = 1;
 const GRAVITITIONAL_CONST: number = 0.001;
 
 let balls = new BallFactory(canvas)
-    .makeBalls(20000)
-    .randomSize(1)
+    .makeBalls(500)
+    .randomSize(10)
     .randomPosition()
     .randomMass(300)
-    .randomSpeed(2)
+    .randomSpeed(4)
     .randomColor(0.01)
     .balls;
 
 function clearBallsAcceleration() {
     for (let ball of balls) {
         ball.acceleration.mult(0);
+    }
+}
+
+function stepAndDrawBalls() {
+    for (let ball of balls) {
+        ball.step();
+        // ball.checkBounds(canvas);
+        painter.drawBall(ball);
     }
 }
 
@@ -34,14 +42,6 @@ function applyForces() {
             frictionForce.mult(ball.speed.mag());
         }
         ball.applyForce(frictionForce);
-    }
-}
-
-function stepAndDrawBalls() {
-    for (let ball of balls) {
-        ball.step();
-        // ball.checkBounds(canvas);
-        painter.drawBall(ball);
     }
 }
 

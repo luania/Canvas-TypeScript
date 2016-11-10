@@ -1,4 +1,5 @@
 import { Ball } from "./Ball";
+import { FluidArea } from "./FluidArea";
 
 export class Painter {
     canvas: HTMLCanvasElement;
@@ -17,5 +18,12 @@ export class Painter {
 
     clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    drawFluidArea(fluidArea: FluidArea) {
+        this.ctx.fillStyle = fluidArea.color;
+        this.ctx.beginPath();
+        this.ctx.rect(fluidArea.position.x, fluidArea.position.y, fluidArea.size.x, fluidArea.size.y);
+        this.ctx.fill();
     }
 }

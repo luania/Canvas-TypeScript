@@ -1,16 +1,16 @@
-define(["require", "exports", "../commons/script/PVector", "../commons/script/BallFactory", "../commons/script/Painter"], function (require, exports, PVector_1, BallFactory_1, Painter_1) {
+define(["require", "exports", "../commons/script/PVector", "../commons/script/Painter", "../commons/script/BallFactory"], function (require, exports, PVector_1, Painter_1, BallFactory_1) {
     "use strict";
     var canvas = document.getElementById("canvas");
     var painter = new Painter_1.Painter(canvas);
-    var FRICTION_CONST = 1;
-    var GRAVITITIONAL_CONST = 0.001;
+    var g = 0.01;
     var balls = new BallFactory_1.BallFactory(canvas)
-        .makeBalls(500)
+        .makeBalls(100)
         .randomSize(10)
-        .randomPosition()
-        .randomMass(300)
-        .randomSpeed(4)
-        .randomColor(0.01)
+        .randomMass(10)
+        .randomXSpeed(0.5)
+        .randomColor(1)
+        .unifyPosition(new PVector_1.PVector(0, 0))
+        .unifyMass(5)
         .balls;
     function clearBallsAcceleration() {
         for (var _i = 0, balls_1 = balls; _i < balls_1.length; _i++) {
@@ -22,24 +22,18 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
         for (var _i = 0, balls_2 = balls; _i < balls_2.length; _i++) {
             var ball = balls_2[_i];
             ball.step();
+            ball.checkBounds(canvas);
             painter.drawBall(ball);
         }
     }
     function applyForces() {
         for (var _i = 0, balls_3 = balls; _i < balls_3.length; _i++) {
             var ball = balls_3[_i];
-            var frictionForceMag = FRICTION_CONST * ball.mass * GRAVITITIONAL_CONST;
-            var frictionForce = PVector_1.PVector.normal(ball.speed).mult(-1);
-            if (frictionForceMag < ball.speed.mag()) {
-                frictionForce.mult(frictionForceMag);
-            }
-            else {
-                frictionForce.mult(ball.speed.mag());
-            }
-            ball.applyForce(frictionForce);
+            ball.applyForce(new PVector_1.PVector(0, 1).mult(ball.mass * g));
         }
     }
     function next() {
+        painter.clearCanvas();
         clearBallsAcceleration();
         applyForces();
         stepAndDrawBalls();
@@ -47,4 +41,4 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
     }
     next();
 });
-//# sourceMappingURL=friction-force.js.map
+//# sourceMappingURL=fall-ball.js.map

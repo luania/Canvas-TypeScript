@@ -35,6 +35,13 @@ define(["require", "exports", "./PVector", "./Ball"], function (require, exports
             }
             return this;
         };
+        BallFactory.prototype.randomXSpeed = function (maxSpeed) {
+            for (var _i = 0, _a = this.balls; _i < _a.length; _i++) {
+                var ball = _a[_i];
+                ball.setSpeed(new PVector_1.PVector(Math.random() * maxSpeed, 0));
+            }
+            return this;
+        };
         BallFactory.prototype.randomMass = function (maxMass) {
             for (var _i = 0, _a = this.balls; _i < _a.length; _i++) {
                 var ball = _a[_i];
@@ -49,6 +56,27 @@ define(["require", "exports", "./PVector", "./Ball"], function (require, exports
                     + "," + Math.round(Math.random() * 255)
                     + "," + Math.round(Math.random() * 255)
                     + ", " + alpha + ")");
+            }
+            return this;
+        };
+        BallFactory.prototype.unifyPosition = function (position) {
+            for (var _i = 0, _a = this.balls; _i < _a.length; _i++) {
+                var ball = _a[_i];
+                ball.setPosition(new PVector_1.PVector(position.x, position.y));
+            }
+            return this;
+        };
+        BallFactory.prototype.unifyMass = function (mass) {
+            for (var _i = 0, _a = this.balls; _i < _a.length; _i++) {
+                var ball = _a[_i];
+                ball.setMass(mass);
+            }
+            return this;
+        };
+        BallFactory.prototype.unifySize = function (size) {
+            for (var _i = 0, _a = this.balls; _i < _a.length; _i++) {
+                var ball = _a[_i];
+                ball.setSize(size);
             }
             return this;
         };

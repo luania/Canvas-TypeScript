@@ -43,6 +43,13 @@ export class BallFactory {
         return this;
     }
 
+    randomXSpeed(maxSpeed: number) {
+        for (let ball of this.balls) {
+            ball.setSpeed(new PVector(Math.random() * maxSpeed, 0));
+        }
+        return this;
+    }
+
     randomMass(maxMass: number) {
         for (let ball of this.balls) {
             ball.setMass(Math.random() * maxMass);
@@ -58,6 +65,27 @@ export class BallFactory {
                 + "," + Math.round(Math.random() * 255)
                 + ", " + alpha + ")"
             );
+        }
+        return this;
+    }
+
+    unifyPosition(position: PVector) {
+        for (let ball of this.balls) {
+            ball.setPosition(new PVector(position.x, position.y));
+        }
+        return this;
+    }
+
+    unifyMass(mass: number) {
+        for (let ball of this.balls) {
+            ball.setMass(mass);
+        }
+        return this;
+    }
+
+    unifySize(size: number) {
+        for (let ball of this.balls) {
+            ball.setSize(size);
         }
         return this;
     }
