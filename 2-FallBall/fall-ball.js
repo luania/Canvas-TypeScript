@@ -3,7 +3,7 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     ctx.fillStyle = 'rgba(192, 80, 77, 1)';
-    var ball = new Ball_1.Ball(new PVector_1.PVector(10, 10), 10)
+    var ball = new Ball_1.Ball()
         .setSpeed(new PVector_1.PVector(0.5, 0))
         .setAcceleration(new PVector_1.PVector(0, 0.01));
     function next() {
@@ -11,7 +11,7 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
         ball.checkBounds(canvas);
         ctx.beginPath();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.arc(ball.position.x, ball.position.y, ball.size, 0, 2 * Math.PI);
+        ctx.arc(ball.position.x + ball.size, ball.position.y + ball.size, ball.size, 0, 2 * Math.PI);
         ctx.fill();
         setTimeout(next, 0);
     }

@@ -1,6 +1,5 @@
 import { PVector } from "../commons/script/PVector";
 import { Ball } from "../commons/script/Ball";
-import { ApplyForceBall } from "../commons/script/ApplyForceBall";
 import { BallFactory } from "../commons/script/BallFactory";
 
 var canvas = <HTMLCanvasElement>document.getElementById("canvas")
@@ -8,8 +7,16 @@ var ctx = canvas.getContext("2d");
 
 const GRAVITITIONAL_CONST: number = 6;
 
-let balls:ApplyForceBall[] = new BallFactory().random(1000, canvas);
-let fingerBall = new ApplyForceBall(new PVector(canvas.width / 2, canvas.width / 2), 10)
+let balls = new BallFactory(canvas)
+    .makeBalls(1000)
+    .randomSize(10)
+    .randomMass(300)
+    .randomColor(0.5)
+    .randomPosition()
+    .balls;
+let fingerBall = new Ball()
+    .setSize(10)
+    .setPosition(new PVector(canvas.width / 2, canvas.width / 2))
     .setMass(1000)
     .setColor("rgba(80, 80, 80, 1)");
 

@@ -2,8 +2,14 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
     "use strict";
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
-    var GRAVITITIONAL_CONST = 6;
-    var balls = new BallFactory_1.BallFactory().random(500, canvas);
+    var GRAVITITIONAL_CONST = 0.001;
+    var balls = new BallFactory_1.BallFactory(canvas)
+        .makeBalls(500)
+        .randomSize(10)
+        .randomPosition()
+        .randomMass(300)
+        .randomColor(0.5)
+        .balls;
     function drawBall(ball) {
         ctx.fillStyle = ball.color;
         ctx.beginPath();

@@ -1,45 +1,64 @@
 import { PVector } from "./PVector";
 import { Ball } from "./Ball";
-import { ApplyForceBall } from "./ApplyForceBall";
 
 export class BallFactory {
-    centerBalls(canvas: HTMLCanvasElement) {
-        let ball1 = new ApplyForceBall(new PVector(canvas.width / 2, canvas.height / 2), 10)
-            .setSpeed(new PVector(0, 0))
-            .setMass(10)
-            .setColor("rgba(80, 80, 200, 0.5)");
-        let ball2 = new ApplyForceBall(new PVector(canvas.width / 2, canvas.height / 2), 10)
-            .setSpeed(new PVector(0, 0))
-            .setMass(15)
-            .setColor("rgba(80, 200, 80, 0.5)");
-        let ball3 = new ApplyForceBall(new PVector(canvas.width / 2, canvas.height / 2), 10)
-            .setSpeed(new PVector(0, 0))
-            .setMass(20)
-            .setColor("rgba(200, 80, 80, 0.5)");
-        let ball4 = new ApplyForceBall(new PVector(canvas.width / 2, canvas.height / 2), 10)
-            .setSpeed(new PVector(0, 0))
-            .setMass(25)
-            .setColor("rgba(200, 200, 80, 0.5)");
-        let ball5 = new ApplyForceBall(new PVector(canvas.width / 2, canvas.height / 2), 10)
-            .setSpeed(new PVector(0, 0))
-            .setMass(30)
-            .setColor("rgba(200, 80, 200, 0.5)");
-        return [ball1, ball2, ball3, ball4, ball5];
+
+    private defaultMaxSize = 10;
+    private defaultMaxMass = 300;
+    private defaultAlpha = 0.5;
+
+    canvas: HTMLCanvasElement;
+    balls: Ball[];
+
+    constructor(canvas: HTMLCanvasElement) {
+        this.canvas = canvas;
+        this.balls = [];
     }
 
-    random(n: number, canvas: HTMLCanvasElement) {
-        let balls: ApplyForceBall[] = [];
+    makeBalls(n: number) {
         for (let i = 0; i < n; i++) {
-            balls.push(new ApplyForceBall(new PVector(Math.random() * canvas.width, Math.random() * canvas.height), 5)
-                .setMass(Math.random() * 300)
-                .setColor("rgba("
-                + Math.round(Math.random() * 17) * 15
-                + ","
-                + Math.round(Math.random() * 17) * 15
-                + ","
-                + Math.round(Math.random() * 17) * 15
-                + ", 0.5)"));
+            this.balls.push(new Ball());
         }
-        return balls;
+        return this;
+    }
+
+    randomPosition() {
+        for (let ball of this.balls) {
+            ball.setPosition(new PVector(Math.random() * this.canvas.width - 2 * ball.size, Math.random() * this.canvas.height - 2 * ball.size));
+        }
+        return this;
+    }
+
+    randomSize(maxSize: number) {
+        for (let ball of this.balls) {
+            ball.setSize(Math.random() * maxSize);
+        }
+        return this;
+    }
+
+    randomSpeed(maxSpeed: number) {
+        for (let ball of this.balls) {
+            ball.setSpeed(new PVector((Math.random() - 0.5) * maxSpeed, (Math.random() - 0.5) * maxSpeed));
+        }
+        return this;
+    }
+
+    randomMass(maxMass: number) {
+        for (let ball of this.balls) {
+            ball.setMass(Math.random() * maxMass);
+        }
+        return this;
+    }
+
+    randomColor(alpha: number) {
+        for (let ball of this.balls) {
+            ball.setColor(
+                "rgba(" + Math.round(Math.random() * 255)
+                + "," + Math.round(Math.random() * 255)
+                + "," + Math.round(Math.random() * 255)
+                + ", " + alpha + ")"
+            );
+        }
+        return this;
     }
 }

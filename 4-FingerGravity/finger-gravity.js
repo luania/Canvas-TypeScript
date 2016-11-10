@@ -1,10 +1,18 @@
-define(["require", "exports", "../commons/script/PVector", "../commons/script/ApplyForceBall", "../commons/script/BallFactory"], function (require, exports, PVector_1, ApplyForceBall_1, BallFactory_1) {
+define(["require", "exports", "../commons/script/PVector", "../commons/script/Ball", "../commons/script/BallFactory"], function (require, exports, PVector_1, Ball_1, BallFactory_1) {
     "use strict";
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     var GRAVITITIONAL_CONST = 6;
-    var balls = new BallFactory_1.BallFactory().random(1000, canvas);
-    var fingerBall = new ApplyForceBall_1.ApplyForceBall(new PVector_1.PVector(canvas.width / 2, canvas.width / 2), 10)
+    var balls = new BallFactory_1.BallFactory(canvas)
+        .makeBalls(1000)
+        .randomSize(10)
+        .randomMass(300)
+        .randomColor(0.5)
+        .randomPosition()
+        .balls;
+    var fingerBall = new Ball_1.Ball()
+        .setSize(10)
+        .setPosition(new PVector_1.PVector(canvas.width / 2, canvas.width / 2))
         .setMass(1000)
         .setColor("rgba(80, 80, 80, 1)");
     canvas.onmousemove = function (ev) {

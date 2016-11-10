@@ -1,14 +1,19 @@
 import { PVector } from "../commons/script/PVector";
 import { Ball } from "../commons/script/Ball";
-import { ApplyForceBall } from "../commons/script/ApplyForceBall";
 import { BallFactory } from "../commons/script/BallFactory";
 
 var canvas = <HTMLCanvasElement>document.getElementById("canvas")
 var ctx = canvas.getContext("2d");
 
-const GRAVITITIONAL_CONST: number = 6;
+const GRAVITITIONAL_CONST: number = 0.001;
 
-let balls: ApplyForceBall[] = new BallFactory().random(500, canvas);
+let balls = new BallFactory(canvas)
+    .makeBalls(500)
+    .randomSize(10)
+    .randomPosition()
+    .randomMass(300)
+    .randomColor(0.5)
+    .balls;
 
 function drawBall(ball: Ball) {
     ctx.fillStyle = ball.color;
