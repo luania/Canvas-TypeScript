@@ -8,7 +8,7 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
         .randomSize(10)
         .randomPosition()
         .randomMass(300)
-        .randomColor(0.5)
+        .randomColor(0.8)
         .balls;
     function drawBall(ball) {
         ctx.fillStyle = ball.color;
@@ -33,18 +33,37 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
             }
         }
     }
-    function stepAndDrawBalls() {
+    function stepBalls() {
         for (var _i = 0, balls_2 = balls; _i < balls_2.length; _i++) {
             var ball = balls_2[_i];
             ball.step();
+        }
+    }
+    function drawBalls() {
+        for (var _i = 0, balls_3 = balls; _i < balls_3.length; _i++) {
+            var ball = balls_3[_i];
             drawBall(ball);
+        }
+    }
+    function drawLines() {
+        for (var i = 0; i < balls.length; i++) {
+            for (var j = i + 1; j < balls.length; j++) {
+                ctx.strokeStyle = "rgba(0,0,0,0.01)";
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(balls[i].position.x, balls[i].position.y);
+                ctx.lineTo(balls[j].position.x, balls[j].position.y);
+                ctx.stroke();
+            }
         }
     }
     function next() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         clearBallsAcceleration();
         applyForces();
-        stepAndDrawBalls();
+        stepBalls();
+        drawLines();
+        drawBalls();
         setTimeout(next, 0);
     }
     next();
