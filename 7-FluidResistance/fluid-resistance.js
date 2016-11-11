@@ -3,14 +3,14 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
     var g = 0.01;
     var canvas = document.getElementById("canvas");
     var painter = new Painter_1.Painter(canvas);
-    var fluidArea = new FluidArea_1.FluidArea(new PVector_1.PVector(0, canvas.height / 2), new PVector_1.PVector(canvas.width, canvas.height / 2))
+    var fluidArea = new FluidArea_1.FluidArea(new PVector_1.PVector(0, canvas.height / 3), new PVector_1.PVector(canvas.width, canvas.height / 3))
         .setColor("rgba(0,100,200,0.1)")
         .setDensity(0.01);
     var balls = [];
     pushBalls();
-    function pushBalls() {
+    function pushBalls(n) {
         var bs = new BallFactory_1.BallFactory(canvas)
-            .makeBalls(1)
+            .makeBalls(n)
             .randomSize(20)
             .randomMass(10)
             .randomXSpeed(1)
@@ -69,7 +69,7 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
     }
     next();
     function productBalls() {
-        pushBalls();
+        pushBalls(10);
         setTimeout(productBalls, 200);
     }
     productBalls();

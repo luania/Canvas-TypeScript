@@ -8,16 +8,16 @@ const g = 0.01;
 let canvas = <HTMLCanvasElement>document.getElementById("canvas")
 let painter = new Painter(canvas);
 
-let fluidArea = new FluidArea(new PVector(0, canvas.height / 2), new PVector(canvas.width, canvas.height / 2))
+let fluidArea = new FluidArea(new PVector(0, canvas.height / 3), new PVector(canvas.width, canvas.height / 3))
     .setColor("rgba(0,100,200,0.1)")
     .setDensity(0.01);
 
 let balls: Ball[] = []
 pushBalls();
 
-function pushBalls() {
+function pushBalls(n: number) {
     let bs: Ball[] = new BallFactory(canvas)
-        .makeBalls(1)
+        .makeBalls(n)
         .randomSize(20)
         .randomMass(10)
         .randomXSpeed(1)
@@ -80,7 +80,7 @@ function next() {
 next();
 
 function productBalls() {
-    pushBalls();
+    pushBalls(10);
     setTimeout(productBalls, 200);
 }
 productBalls();
