@@ -1,4 +1,5 @@
 import { PVector } from "./PVector";
+import { Ball } from "./Ball";
 
 export class FluidArea {
     position: PVector;
@@ -24,5 +25,11 @@ export class FluidArea {
     setDensity(density: number) {
         this.density = density;
         return this;
+    }
+    containBall(ball: Ball) {
+        return ball.position.x > this.position.x - ball.size * 2
+            && ball.position.x < this.position.x + this.size.x
+            && ball.position.y > this.position.y - ball.size * 2
+            && ball.position.y < this.position.y + this.size.y;
     }
 }

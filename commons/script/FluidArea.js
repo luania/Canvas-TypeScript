@@ -21,6 +21,12 @@ define(["require", "exports"], function (require, exports) {
             this.density = density;
             return this;
         };
+        FluidArea.prototype.containBall = function (ball) {
+            return ball.position.x > this.position.x - ball.size * 2
+                && ball.position.x < this.position.x + this.size.x
+                && ball.position.y > this.position.y - ball.size * 2
+                && ball.position.y < this.position.y + this.size.y;
+        };
         return FluidArea;
     }());
     exports.FluidArea = FluidArea;
