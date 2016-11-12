@@ -37,6 +37,7 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
         for (var _i = 0, balls_2 = balls; _i < balls_2.length; _i++) {
             var ball = balls_2[_i];
             ball.step();
+            ball.checkBounds(canvas);
         }
     }
     function drawBalls() {

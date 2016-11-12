@@ -35,6 +35,7 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
             ball.acceleration.mult(0);
             ball.applyForce(fingerForce);
             ball.step();
+            ball.checkBounds(canvas);
             drawBall(ball);
         }
         drawBall(fingerBall);

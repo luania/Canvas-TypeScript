@@ -5,7 +5,9 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
     ctx.fillStyle = 'rgba(192, 80, 77, 1)';
     var ball = new Ball_1.Ball()
         .setSpeed(new PVector_1.PVector(0.5, 0))
-        .setAcceleration(new PVector_1.PVector(0, 0.01));
+        .setAcceleration(new PVector_1.PVector(0, 0.01))
+        .setSize(10)
+        .setPosition(new PVector_1.PVector(10, 10));
     function next() {
         ball.step();
         ball.checkBounds(canvas);

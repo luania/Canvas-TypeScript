@@ -43,7 +43,7 @@ function next() {
         ball.acceleration.mult(0);
         ball.applyForce(fingerForce);
         ball.step();
-        // ball.checkBounds(canvas);
+        ball.checkBounds(canvas);
         drawBall(ball);
     }
     drawBall(fingerBall);

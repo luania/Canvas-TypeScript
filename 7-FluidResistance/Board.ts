@@ -28,7 +28,7 @@ export class Board {
             .randomMass(10)
             .randomXSpeed(1)
             .randomColor(0.5)
-            .unifyPosition(new PVector(0, 0))
+            .unifyPosition(new PVector(20,20))
             .balls;
         for (let b of bs) {
             this.balls.push(b);

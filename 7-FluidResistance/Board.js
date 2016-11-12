@@ -17,7 +17,7 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
                 .randomMass(10)
                 .randomXSpeed(1)
                 .randomColor(0.5)
-                .unifyPosition(new PVector_1.PVector(0, 0))
+                .unifyPosition(new PVector_1.PVector(20, 20))
                 .balls;
             for (var _i = 0, bs_1 = bs; _i < bs_1.length; _i++) {
                 var b = bs_1[_i];

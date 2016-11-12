@@ -21,11 +21,11 @@ define(["require", "exports", "./Obj"], function (require, exports, Obj_1) {
             this.position.add(this.speed);
         };
         Ball.prototype.checkBounds = function (canvas) {
-            if (this.position.x > canvas.width - this.size * 2 || this.position.x < 0) {
+            if (this.position.x > canvas.width - this.size || this.position.x < this.size) {
                 this.speed.x *= -1;
                 this.position.add(this.speed);
             }
-            if (this.position.y > canvas.height - this.size * 2 || this.position.y < 0) {
+            if (this.position.y > canvas.height - this.size || this.position.y < this.size) {
                 this.speed.y *= -1;
                 this.position.add(this.speed);
             }

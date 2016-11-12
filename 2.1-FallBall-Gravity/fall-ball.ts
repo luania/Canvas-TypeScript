@@ -14,7 +14,7 @@ let balls = new BallFactory(canvas)
     .randomMass(10)
     .randomXSpeed(0.5)
     .randomColor(1)
-    .unifyPosition(new PVector(0, 0))
+    .unifyPosition(new PVector(10, 10))
     .unifyMass(5)
     .balls;
 

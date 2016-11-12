@@ -2,9 +2,6 @@ define(["require", "exports", "./PVector", "./Ball"], function (require, exports
     "use strict";
     var BallFactory = (function () {
         function BallFactory(canvas) {
-            this.defaultMaxSize = 10;
-            this.defaultMaxMass = 300;
-            this.defaultAlpha = 0.5;
             this.canvas = canvas;
             this.balls = [];
         }
@@ -17,7 +14,7 @@ define(["require", "exports", "./PVector", "./Ball"], function (require, exports
         BallFactory.prototype.randomPosition = function () {
             for (var _i = 0, _a = this.balls; _i < _a.length; _i++) {
                 var ball = _a[_i];
-                ball.setPosition(new PVector_1.PVector(Math.random() * this.canvas.width - 2 * ball.size, Math.random() * this.canvas.height - 2 * ball.size));
+                ball.setPosition(new PVector_1.PVector(Math.random() * (this.canvas.width - 2 * ball.size) + ball.size, Math.random() * (this.canvas.height - 2 * ball.size) + ball.size));
             }
             return this;
         };

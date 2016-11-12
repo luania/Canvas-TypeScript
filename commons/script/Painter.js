@@ -8,7 +8,7 @@ define(["require", "exports"], function (require, exports) {
         Painter.prototype.drawBall = function (ball) {
             this.ctx.fillStyle = ball.color;
             this.ctx.beginPath();
-            this.ctx.arc(ball.position.x + ball.size, ball.position.y + ball.size, ball.size, 0, 2 * Math.PI);
+            this.ctx.arc(ball.position.x, ball.position.y, ball.size, 0, 2 * Math.PI);
             this.ctx.fill();
         };
         Painter.prototype.clearCanvas = function () {
@@ -21,7 +21,7 @@ define(["require", "exports"], function (require, exports) {
             this.ctx.fill();
         };
         Painter.prototype.drawBlock = function (block) {
-            this.ctx.fillStyle = "#000";
+            this.ctx.fillStyle = block.color;
             this.ctx.beginPath();
             var points = block.points();
             this.ctx.moveTo(points[0].x, points[0].y);

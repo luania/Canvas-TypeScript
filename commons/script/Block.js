@@ -9,7 +9,7 @@ define(["require", "exports", "./PVector", "./PolarVector", "./Obj"], function (
         __extends(Block, _super);
         function Block() {
             var _this = _super.apply(this, arguments) || this;
-            _this.size = new PolarVector_1.PolarVector(1, 0);
+            _this.size = new PolarVector_1.PolarVector(1, Math.PI / 4);
             _this.angle = 0;
             return _this;
         }

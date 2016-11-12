@@ -1,0 +1,29 @@
+import { Block } from "../commons/script/Block";
+import { PolarVector } from "../commons/script/PolarVector";
+import { PVector } from "../commons/script/PVector";
+import { Painter } from "../commons/script/Painter";
+
+let canvas = <HTMLCanvasElement>document.getElementById("canvas");
+let painter = new Painter(canvas);
+
+let center = new PVector(canvas.width / 2, canvas.height / 2);
+let distance = new PolarVector(100, 0);
+
+let block = new Block()
+    .setColor("rgb(0,100,200)")
+    .setPosition(PVector.add(center, distance.toPVector()))
+    .setSize(new PolarVector(20, Math.PI / 6));
+
+function refreshStatus() {
+    distance.rotate(Math.PI / 180);
+    block.setPosition(PVector.add(center, distance.toPVector()))
+        .setAngle(distance.angle + Math.PI / 2);
+    setTimeout(refreshStatus, 0);
+}
+refreshStatus();
+function draw() {
+    painter.clearCanvas();
+    painter.drawBlock(block);
+    setTimeout(draw, 0);
+}
+draw();

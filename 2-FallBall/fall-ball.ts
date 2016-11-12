@@ -7,7 +7,9 @@ ctx.fillStyle = 'rgba(192, 80, 77, 1)';
 
 var ball = new Ball()
     .setSpeed(new PVector(0.5, 0))
-    .setAcceleration(new PVector(0, 0.01));
+    .setAcceleration(new PVector(0, 0.01))
+    .setSize(10)
+    .setPosition(new PVector(10, 10));
 
 function next() {
     ball.step();

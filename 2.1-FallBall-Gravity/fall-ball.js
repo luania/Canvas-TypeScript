@@ -9,7 +9,7 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Pa
         .randomMass(10)
         .randomXSpeed(0.5)
         .randomColor(1)
-        .unifyPosition(new PVector_1.PVector(0, 0))
+        .unifyPosition(new PVector_1.PVector(10, 10))
         .unifyMass(5)
         .balls;
     function clearBallsAcceleration() {

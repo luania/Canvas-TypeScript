@@ -2,11 +2,6 @@ import { PVector } from "./PVector";
 import { Ball } from "./Ball";
 
 export class BallFactory {
-
-    private defaultMaxSize = 10;
-    private defaultMaxMass = 300;
-    private defaultAlpha = 0.5;
-
     canvas: HTMLCanvasElement;
     balls: Ball[];
 
@@ -24,7 +19,7 @@ export class BallFactory {
 
     randomPosition() {
         for (let ball of this.balls) {
-            ball.setPosition(new PVector(Math.random() * this.canvas.width - 2 * ball.size, Math.random() * this.canvas.height - 2 * ball.size));
+            ball.setPosition(new PVector(Math.random() * (this.canvas.width - 2 * ball.size) + ball.size, Math.random() * (this.canvas.height - 2 * ball.size) + ball.size));
         }
         return this;
     }

@@ -15,7 +15,7 @@ export class Painter {
     drawBall(ball: Ball) {
         this.ctx.fillStyle = ball.color;
         this.ctx.beginPath();
-        this.ctx.arc(ball.position.x + ball.size, ball.position.y + ball.size, ball.size, 0, 2 * Math.PI);
+        this.ctx.arc(ball.position.x, ball.position.y, ball.size, 0, 2 * Math.PI);
         this.ctx.fill();
     }
 
@@ -30,7 +30,7 @@ export class Painter {
         this.ctx.fill();
     }
     drawBlock(block: Block) {
-        this.ctx.fillStyle = "#000";
+        this.ctx.fillStyle = block.color;
         this.ctx.beginPath();
         let points = block.points();
         this.ctx.moveTo(points[0].x, points[0].y);

@@ -45,7 +45,7 @@ function applyForces() {
 function stepBalls() {
     for (let ball of balls) {
         ball.step();
-        // ball.checkBounds(canvas);
+        ball.checkBounds(canvas);
     }
 }
 
