@@ -1,4 +1,4 @@
-define(["require", "exports"], function (require, exports) {
+define(["require", "exports", "./PolarVector"], function (require, exports, PolarVector_1) {
     "use strict";
     var PVector = (function () {
         function PVector(x, y) {
@@ -55,6 +55,9 @@ define(["require", "exports"], function (require, exports) {
         };
         PVector.random = function () {
             return new PVector((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20);
+        };
+        PVector.prototype.toPolarVector = function () {
+            return new PolarVector_1.PolarVector(this.mag(), Math.atan2(this.y, this.x));
         };
         return PVector;
     }());

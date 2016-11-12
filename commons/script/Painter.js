@@ -20,6 +20,16 @@ define(["require", "exports"], function (require, exports) {
             this.ctx.rect(fluidArea.position.x, fluidArea.position.y, fluidArea.size.x, fluidArea.size.y);
             this.ctx.fill();
         };
+        Painter.prototype.drawBlock = function (block) {
+            this.ctx.fillStyle = "#000";
+            this.ctx.beginPath();
+            var points = block.points();
+            this.ctx.moveTo(points[0].x, points[0].y);
+            for (var i = 1; i < points.length; i++) {
+                this.ctx.lineTo(points[i].x, points[i].y);
+            }
+            this.ctx.fill();
+        };
         return Painter;
     }());
     exports.Painter = Painter;

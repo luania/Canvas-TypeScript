@@ -1,3 +1,5 @@
+import { PolarVector } from "./PolarVector";
+
 export class PVector {
     x: number;
     y: number;
@@ -67,5 +69,9 @@ export class PVector {
 
     static random() {
         return new PVector((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20);
+    }
+
+    toPolarVector() {
+        return new PolarVector(this.mag(), Math.atan2(this.y, this.x));
     }
 }

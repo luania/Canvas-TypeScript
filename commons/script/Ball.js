@@ -1,45 +1,24 @@
-define(["require", "exports", "./PVector"], function (require, exports, PVector_1) {
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+define(["require", "exports", "./Obj"], function (require, exports, Obj_1) {
     "use strict";
-    var Ball = (function () {
+    var Ball = (function (_super) {
+        __extends(Ball, _super);
         function Ball() {
-            this.position = new PVector_1.PVector(0, 0);
-            this.size = 10;
-            this.speed = new PVector_1.PVector(0, 0);
-            this.acceleration = new PVector_1.PVector(0, 0);
-            this.color = "rgba(192, 80, 77, 0.5)";
-            this.mass = 1;
+            var _this = _super.apply(this, arguments) || this;
+            _this.size = 10;
+            return _this;
         }
-        Ball.prototype.step = function () {
-            this.speed.add(this.acceleration);
-            this.position.add(this.speed);
-        };
-        Ball.prototype.setPosition = function (position) {
-            this.position = position;
-            return this;
-        };
         Ball.prototype.setSize = function (size) {
             this.size = size;
             return this;
         };
-        Ball.prototype.setSpeed = function (speed) {
-            this.speed = speed;
-            return this;
-        };
-        Ball.prototype.setAcceleration = function (acceleration) {
-            this.acceleration = acceleration;
-            return this;
-        };
-        Ball.prototype.setColor = function (color) {
-            this.color = color;
-            return this;
-        };
-        Ball.prototype.setMass = function (mass) {
-            this.mass = mass;
-            return this;
-        };
-        Ball.prototype.applyForce = function (force) {
-            this.acceleration.add(PVector_1.PVector.div(force, this.mass));
-            return this;
+        Ball.prototype.step = function () {
+            this.speed.add(this.acceleration);
+            this.position.add(this.speed);
         };
         Ball.prototype.checkBounds = function (canvas) {
             if (this.position.x > canvas.width - this.size * 2 || this.position.x < 0) {
@@ -52,7 +31,7 @@ define(["require", "exports", "./PVector"], function (require, exports, PVector_
             }
         };
         return Ball;
-    }());
+    }(Obj_1.Obj));
     exports.Ball = Ball;
 });
 //# sourceMappingURL=Ball.js.map
