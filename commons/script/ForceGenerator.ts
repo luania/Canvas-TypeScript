@@ -5,7 +5,7 @@ import { FluidArea } from "./FluidArea";
 const GRAVITY_ACCELERATION = new PVector(0, 0.0098);
 
 export class ForceGenerator {
-    gravitation(ball: Ball) {
+    earthGravitation(ball: Ball) {
         return PVector.mult(GRAVITY_ACCELERATION, ball.mass);
     }
     resistance(ball: Ball, fluidArea: FluidArea) {

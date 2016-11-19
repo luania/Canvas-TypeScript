@@ -4,7 +4,7 @@ define(["require", "exports", "./PVector"], function (require, exports, PVector_
     var ForceGenerator = (function () {
         function ForceGenerator() {
         }
-        ForceGenerator.prototype.gravitation = function (ball) {
+        ForceGenerator.prototype.earthGravitation = function (ball) {
             return PVector_1.PVector.mult(GRAVITY_ACCELERATION, ball.mass);
         };
         ForceGenerator.prototype.resistance = function (ball, fluidArea) {

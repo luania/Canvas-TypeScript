@@ -11,14 +11,20 @@ export class Board {
     forceGenerator: ForceGenerator;
     fluidArea: FluidArea;
     balls: Ball[] = [];
+    fingerBall: Ball = new Ball()
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
         this.forceGenerator = new ForceGenerator();
         this.painter = new Painter(canvas);
-        this.fluidArea = new FluidArea(new PVector(0, canvas.height / 2), new PVector(canvas.width, canvas.height / 2))
-            .setColor("rgba(0,100,200,0.1)")
-            .setDensity(0.01);
+
+        this.fluidArea = new FluidArea(new PVector(0, 0), new PVector(canvas.width, canvas.height))
+        this.fluidArea.color = "rgba(0,100,200,0.1)";
+        this.fluidArea.density = 1;
+
+        this.fingerBall.size = 10;
+        this.fingerBall.mass = 1000;
+        this.fingerBall.color = "rgba(80, 80, 80, 1)";
     }
 
     generateBalls(n: number) {
@@ -26,9 +32,8 @@ export class Board {
             .makeBalls(n)
             .randomSize(20)
             .randomMass(10)
-            .randomXSpeed(1)
             .randomColor(0.5)
-            .unifyPosition(new PVector(20,20))
+            .randomPosition()
             .balls;
         for (let b of bs) {
             this.balls.push(b);
@@ -58,7 +63,7 @@ export class Board {
 
     applyForces() {
         for (let ball of this.balls) {
-            ball.applyForce(this.forceGenerator.earthGravitation(ball));
+            ball.applyForce(this.forceGenerator.repulsion(this.fingerBall, ball));
             ball.applyForce(this.forceGenerator.resistance(ball, this.fluidArea));
         }
     }
