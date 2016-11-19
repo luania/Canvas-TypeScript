@@ -1,7 +1,7 @@
-import { PVector } from "../commons/script/PVector";
-import { Ball } from "../commons/script/Ball";
-import { BallFactory } from "../commons/script/BallFactory";
-import { Painter } from "../commons/script/Painter";
+import { PVector } from "./script/PVector";
+import { Ball } from "./script/Ball";
+import { BallFactory } from "./script/BallFactory";
+import { Painter } from "./script/Painter";
 
 let canvas = <HTMLCanvasElement>document.getElementById("canvas")
 var painter: Painter = new Painter(canvas);
@@ -10,11 +10,10 @@ const FRICTION_CONST: number = 1;
 const GRAVITITIONAL_CONST: number = 0.001;
 
 let balls = new BallFactory(canvas)
-    .makeBalls(500)
-    .randomSize(10)
+    .makeBalls(2000)
     .randomPosition()
     .randomMass(300)
-    .randomSpeed(4)
+    .randomSpeed(3)
     .randomColor(0.01)
     .balls;
 

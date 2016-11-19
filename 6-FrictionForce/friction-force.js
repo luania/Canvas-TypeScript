@@ -1,15 +1,14 @@
-define(["require", "exports", "../commons/script/PVector", "../commons/script/BallFactory", "../commons/script/Painter"], function (require, exports, PVector_1, BallFactory_1, Painter_1) {
+define(["require", "exports", "./script/PVector", "./script/BallFactory", "./script/Painter"], function (require, exports, PVector_1, BallFactory_1, Painter_1) {
     "use strict";
     var canvas = document.getElementById("canvas");
     var painter = new Painter_1.Painter(canvas);
     var FRICTION_CONST = 1;
     var GRAVITITIONAL_CONST = 0.001;
     var balls = new BallFactory_1.BallFactory(canvas)
-        .makeBalls(500)
-        .randomSize(10)
+        .makeBalls(2000)
         .randomPosition()
         .randomMass(300)
-        .randomSpeed(4)
+        .randomSpeed(3)
         .randomColor(0.01)
         .balls;
     function clearBallsAcceleration() {

@@ -1,7 +1,7 @@
-import { PVector } from "../commons/script/PVector";
-import { Ball } from "../commons/script/Ball";
-import { Painter } from "../commons/script/Painter";
-import { BallFactory } from "../commons/script/BallFactory";
+import { PVector } from "./script/PVector";
+import { Ball } from "./script/Ball";
+import { Painter } from "./script/Painter";
+import { BallFactory } from "./script/BallFactory";
 
 var canvas = <HTMLCanvasElement>document.getElementById("canvas")
 let painter = new Painter(canvas);
@@ -15,7 +15,6 @@ let balls = new BallFactory(canvas)
     .randomXSpeed(0.5)
     .randomColor(1)
     .unifyPosition(new PVector(10, 10))
-    .unifyMass(5)
     .balls;
 
 function clearBallsAcceleration() {

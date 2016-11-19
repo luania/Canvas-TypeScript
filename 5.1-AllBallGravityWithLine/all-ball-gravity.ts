@@ -1,6 +1,6 @@
-import { PVector } from "../commons/script/PVector";
-import { Ball } from "../commons/script/Ball";
-import { BallFactory } from "../commons/script/BallFactory";
+import { PVector } from "./script/PVector";
+import { Ball } from "./script/Ball";
+import { BallFactory } from "./script/BallFactory";
 
 var canvas = <HTMLCanvasElement>document.getElementById("canvas")
 var ctx = canvas.getContext("2d");
@@ -45,7 +45,7 @@ function applyForces() {
 function stepBalls() {
     for (let ball of balls) {
         ball.step();
-        ball.checkBounds(canvas);
+        // ball.checkBounds(canvas);
     }
 }
 

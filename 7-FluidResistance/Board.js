@@ -1,4 +1,4 @@
-define(["require", "exports", "../commons/script/PVector", "../commons/script/BallFactory", "../commons/script/FluidArea", "../commons/script/Painter", "../commons/script/ForceGenerator"], function (require, exports, PVector_1, BallFactory_1, FluidArea_1, Painter_1, ForceGenerator_1) {
+define(["require", "exports", "./script/PVector", "./script/BallFactory", "./script/FluidArea", "./script/Painter", "./script/ForceGenerator"], function (require, exports, PVector_1, BallFactory_1, FluidArea_1, Painter_1, ForceGenerator_1) {
     "use strict";
     var Board = (function () {
         function Board(canvas) {

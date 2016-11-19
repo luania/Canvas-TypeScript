@@ -1,6 +1,6 @@
-import { PVector } from "../commons/script/PVector";
-import { Ball } from "../commons/script/Ball";
-import { BallFactory } from "../commons/script/BallFactory";
+import { PVector } from "./script/PVector";
+import { Ball } from "./script/Ball";
+import { BallFactory } from "./script/BallFactory";
 
 var canvas = <HTMLCanvasElement>document.getElementById("canvas")
 var ctx = canvas.getContext("2d");
@@ -8,7 +8,7 @@ var ctx = canvas.getContext("2d");
 const GRAVITITIONAL_CONST: number = 0.001;
 
 let balls = new BallFactory(canvas)
-    .makeBalls(100)
+    .makeBalls(500)
     .randomSize(10)
     .randomPosition()
     .randomMass(300)

@@ -1,4 +1,4 @@
-define(["require", "exports", "../commons/script/PVector", "../commons/script/Block", "../commons/script/Painter", "../commons/script/PolarVector"], function (require, exports, PVector_1, Block_1, Painter_1, PolarVector_1) {
+define(["require", "exports", "./script/PVector", "./script/Block", "./script/Painter", "./script/PolarVector"], function (require, exports, PVector_1, Block_1, Painter_1, PolarVector_1) {
     "use strict";
     var canvas = document.getElementById("canvas");
     var painter = new Painter_1.Painter(canvas);

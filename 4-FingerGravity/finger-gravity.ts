@@ -1,6 +1,6 @@
-import { PVector } from "../commons/script/PVector";
-import { Ball } from "../commons/script/Ball";
-import { BallFactory } from "../commons/script/BallFactory";
+import { PVector } from "./script/PVector";
+import { Ball } from "./script/Ball";
+import { BallFactory } from "./script/BallFactory";
 
 var canvas = <HTMLCanvasElement>document.getElementById("canvas")
 var ctx = canvas.getContext("2d");
@@ -15,10 +15,10 @@ let balls = new BallFactory(canvas)
     .randomPosition()
     .balls;
 let fingerBall = new Ball()
-    .setSize(10)
-    .setPosition(new PVector(canvas.width / 2, canvas.width / 2))
-    .setMass(1000)
-    .setColor("rgba(80, 80, 80, 1)");
+fingerBall.size = 10;
+fingerBall.position = new PVector(canvas.width / 2, canvas.width / 2);
+fingerBall.mass = 1000;
+fingerBall.color = "rgba(80, 80, 80, 1)";
 
 canvas.onmousemove = function(ev: MouseEvent) {
     fingerBall.position.x = ev.layerX;
@@ -43,7 +43,7 @@ function next() {
         ball.acceleration.mult(0);
         ball.applyForce(fingerForce);
         ball.step();
-        ball.checkBounds(canvas);
+        // ball.checkBounds(canvas);
         drawBall(ball);
     }
     drawBall(fingerBall);

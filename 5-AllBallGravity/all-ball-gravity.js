@@ -1,10 +1,10 @@
-define(["require", "exports", "../commons/script/PVector", "../commons/script/BallFactory"], function (require, exports, PVector_1, BallFactory_1) {
+define(["require", "exports", "./script/PVector", "./script/BallFactory"], function (require, exports, PVector_1, BallFactory_1) {
     "use strict";
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     var GRAVITITIONAL_CONST = 0.001;
     var balls = new BallFactory_1.BallFactory(canvas)
-        .makeBalls(100)
+        .makeBalls(500)
         .randomSize(10)
         .randomPosition()
         .randomMass(300)

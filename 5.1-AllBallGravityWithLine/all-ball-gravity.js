@@ -1,4 +1,4 @@
-define(["require", "exports", "../commons/script/PVector", "../commons/script/BallFactory"], function (require, exports, PVector_1, BallFactory_1) {
+define(["require", "exports", "./script/PVector", "./script/BallFactory"], function (require, exports, PVector_1, BallFactory_1) {
     "use strict";
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
@@ -37,7 +37,6 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
         for (var _i = 0, balls_2 = balls; _i < balls_2.length; _i++) {
             var ball = balls_2[_i];
             ball.step();
-            ball.checkBounds(canvas);
         }
     }
     function drawBalls() {

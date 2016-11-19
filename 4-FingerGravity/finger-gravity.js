@@ -1,4 +1,4 @@
-define(["require", "exports", "../commons/script/PVector", "../commons/script/Ball", "../commons/script/BallFactory"], function (require, exports, PVector_1, Ball_1, BallFactory_1) {
+define(["require", "exports", "./script/PVector", "./script/Ball", "./script/BallFactory"], function (require, exports, PVector_1, Ball_1, BallFactory_1) {
     "use strict";
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
@@ -10,11 +10,11 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
         .randomColor(0.5)
         .randomPosition()
         .balls;
-    var fingerBall = new Ball_1.Ball()
-        .setSize(10)
-        .setPosition(new PVector_1.PVector(canvas.width / 2, canvas.width / 2))
-        .setMass(1000)
-        .setColor("rgba(80, 80, 80, 1)");
+    var fingerBall = new Ball_1.Ball();
+    fingerBall.size = 10;
+    fingerBall.position = new PVector_1.PVector(canvas.width / 2, canvas.width / 2);
+    fingerBall.mass = 1000;
+    fingerBall.color = "rgba(80, 80, 80, 1)";
     canvas.onmousemove = function (ev) {
         fingerBall.position.x = ev.layerX;
         fingerBall.position.y = ev.layerY;
@@ -35,7 +35,6 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Ba
             ball.acceleration.mult(0);
             ball.applyForce(fingerForce);
             ball.step();
-            ball.checkBounds(canvas);
             drawBall(ball);
         }
         drawBall(fingerBall);

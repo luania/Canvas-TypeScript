@@ -1,9 +1,9 @@
-import { PVector } from "../commons/script/PVector";
-import { Ball } from "../commons/script/Ball";
-import { BallFactory } from "../commons/script/BallFactory";
-import { FluidArea } from "../commons/script/FluidArea";
-import { Painter } from "../commons/script/Painter";
-import { ForceGenerator } from "../commons/script/ForceGenerator";
+import { PVector } from "./script/PVector";
+import { Ball } from "./script/Ball";
+import { BallFactory } from "./script/BallFactory";
+import { FluidArea } from "./script/FluidArea";
+import { Painter } from "./script/Painter";
+import { ForceGenerator } from "./script/ForceGenerator";
 
 export class Board {
     canvas: HTMLCanvasElement;

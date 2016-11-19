@@ -1,4 +1,4 @@
-define(["require", "exports", "../commons/script/PVector"], function (require, exports, PVector_1) {
+define(["require", "exports", "./PVector"], function (require, exports, PVector_1) {
     "use strict";
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
@@ -7,8 +7,7 @@ define(["require", "exports", "../commons/script/PVector"], function (require, e
     ctx.beginPath();
     ctx.moveTo(position.x, position.y);
     function next() {
-        console.log('next');
-        position.add(PVector_1.PVector.random());
+        position.add(new PVector_1.PVector((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20));
         ctx.beginPath();
         ctx.arc(position.x, position.y, 10, 0, 2 * Math.PI);
         ctx.fill();

@@ -1,4 +1,4 @@
-import { PVector } from "../commons/script/PVector";
+import { PVector } from "./script/PVector";
 
 var canvas = <HTMLCanvasElement>document.getElementById("canvas")
 var ctx = canvas.getContext("2d");

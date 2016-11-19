@@ -1,4 +1,4 @@
-define(["require", "exports", "../commons/script/PVector", "../commons/script/Painter", "../commons/script/BallFactory"], function (require, exports, PVector_1, Painter_1, BallFactory_1) {
+define(["require", "exports", "./script/PVector", "./script/Painter", "./script/BallFactory"], function (require, exports, PVector_1, Painter_1, BallFactory_1) {
     "use strict";
     var canvas = document.getElementById("canvas");
     var painter = new Painter_1.Painter(canvas);
@@ -10,7 +10,6 @@ define(["require", "exports", "../commons/script/PVector", "../commons/script/Pa
         .randomXSpeed(0.5)
         .randomColor(1)
         .unifyPosition(new PVector_1.PVector(10, 10))
-        .unifyMass(5)
         .balls;
     function clearBallsAcceleration() {
         for (var _i = 0, balls_1 = balls; _i < balls_1.length; _i++) {

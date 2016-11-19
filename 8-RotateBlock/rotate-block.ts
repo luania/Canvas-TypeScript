@@ -1,7 +1,7 @@
-import { PVector } from "../commons/script/PVector";
-import { Block } from "../commons/script/Block";
-import { Painter } from "../commons/script/Painter";
-import { PolarVector } from "../commons/script/PolarVector";
+import { PVector } from "./script/PVector";
+import { Block } from "./script/Block";
+import { Painter } from "./script/Painter";
+import { PolarVector } from "./script/PolarVector";
 
 let canvas = <HTMLCanvasElement>document.getElementById("canvas")
 var painter: Painter = new Painter(canvas);
