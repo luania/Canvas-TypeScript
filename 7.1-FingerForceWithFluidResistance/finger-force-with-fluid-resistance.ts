@@ -2,7 +2,7 @@ import { Board } from "./Board";
 
 let canvas = <HTMLCanvasElement>document.getElementById("canvas")
 let board = new Board(canvas);
-board.generateBalls(1000);
+board.generateBalls(2000);
 
 canvas.onmousemove = function(ev: MouseEvent) {
     board.fingerBall.position.x = ev.layerX;

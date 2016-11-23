@@ -2,7 +2,7 @@ define(["require", "exports", "./Board"], function (require, exports, Board_1) {
     "use strict";
     var canvas = document.getElementById("canvas");
     var board = new Board_1.Board(canvas);
-    board.generateBalls(1000);
+    board.generateBalls(2000);
     canvas.onmousemove = function (ev) {
         board.fingerBall.position.x = ev.layerX;
         board.fingerBall.position.y = ev.layerY;

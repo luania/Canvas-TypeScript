@@ -59,6 +59,7 @@ export class Board {
         for (let ball of this.balls) {
             this.painter.drawBall(ball);
         }
+        this.painter.drawBall(this.fingerBall);
     }
 
     applyForces() {

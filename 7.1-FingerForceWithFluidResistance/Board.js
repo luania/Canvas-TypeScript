@@ -47,6 +47,7 @@ define(["require", "exports", "./script/PVector", "./script/Ball", "./script/Bal
                 var ball = _a[_i];
                 this.painter.drawBall(ball);
             }
+            this.painter.drawBall(this.fingerBall);
         };
         Board.prototype.applyForces = function () {
             for (var _i = 0, _a = this.balls; _i < _a.length; _i++) {
