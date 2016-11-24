@@ -15,28 +15,28 @@ originBall.position = new PVector(canvas.width / 2, canvas.height / 4);
 let pendulumBall = new Ball();
 pendulumBall.size = 20;
 pendulumBall.color = "rgb(0,100,200)";
-pendulumBall.mass = 0.00001;
 pendulumBall.position = new PVector(canvas.width / 4 * 3, canvas.height / 4);
 
-let gravityForce = new ForceGenerator().earthGravitation(pendulumBall);
 let angleVel = 0;
-let angleAcc = 0;
 
 function refreshStatus() {
     let distance = PVector.sub(pendulumBall.position, originBall.position);
-    angleAcc = Math.cos(distance.toPolarVector().angle) * gravityForce.mag() / pendulumBall.mass / distance.mag();
+    let angleAcc = Math.cos(distance.toPolarVector().angle)
+        * ForceGenerator.earthAcc().mag() / distance.mag();
     angleVel += angleAcc;
-    pendulumBall.position = PVector.add(originBall.position, distance.toPolarVector().rotate(angleVel).toPVector());
-
+    pendulumBall.position = PVector.add(
+        originBall.position,
+        PVector.rotate(distance, angleVel)
+    );
     setTimeout(refreshStatus, 0);
 }
 refreshStatus();
 
 function draw() {
     painter.clearCanvas();
+    painter.drawLine(originBall.position, pendulumBall.position, "rgb(0,100,200)");
     painter.drawBall(originBall);
     painter.drawBall(pendulumBall);
-    painter.drawLine(originBall.position, pendulumBall.position, "rgb(0,100,200)");
     setTimeout(draw, 0);
 }
 draw();
