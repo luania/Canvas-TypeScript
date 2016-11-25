@@ -15,11 +15,17 @@ let painter = new Painter(canvas);
 let scale = canvas.getBoundingClientRect().width / canvas.width;
 
 let arr: ExPartical[] = [];
+let originPosition = new PVector(0, 0);
 
 canvas.onmousemove = function(ev: MouseEvent) {
+    originPosition.x = ev.layerX / scale;
+    originPosition.y = ev.layerY / scale;
+}
+
+function emit() {
     for (let i = 0; i < 5; i++) {
         let p = new ExPartical();
-        p.position = new PVector(ev.layerX / scale, ev.layerY / scale);
+        p.position = PVector.copy(originPosition);
         p.velocity = new PVector((Math.random() - 0.5) * 3, (Math.random() - 0.5) * 3);
         p.lifeSpan = 100;
         p.r = Math.round(Math.random() * 255);
@@ -29,6 +35,8 @@ canvas.onmousemove = function(ev: MouseEvent) {
         arr.push(p);
     }
 }
+setInterval(emit,30);
+
 
 function refreshStatus() {
     for (let p of arr) {

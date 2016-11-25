@@ -21,10 +21,15 @@ define(["require", "exports", "./script/PVector", "./script/Partical", "./script
     var painter = new Painter_1.Painter(canvas);
     var scale = canvas.getBoundingClientRect().width / canvas.width;
     var arr = [];
+    var originPosition = new PVector_1.PVector(0, 0);
     canvas.onmousemove = function (ev) {
+        originPosition.x = ev.layerX / scale;
+        originPosition.y = ev.layerY / scale;
+    };
+    function emit() {
         for (var i = 0; i < 5; i++) {
             var p = new ExPartical();
-            p.position = new PVector_1.PVector(ev.layerX / scale, ev.layerY / scale);
+            p.position = PVector_1.PVector.copy(originPosition);
             p.velocity = new PVector_1.PVector((Math.random() - 0.5) * 3, (Math.random() - 0.5) * 3);
             p.lifeSpan = 100;
             p.r = Math.round(Math.random() * 255);
@@ -33,7 +38,8 @@ define(["require", "exports", "./script/PVector", "./script/Partical", "./script
             p.size = Math.round(Math.random() * 5) * 2;
             arr.push(p);
         }
-    };
+    }
+    setInterval(emit, 30);
     function refreshStatus() {
         for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
             var p = arr_1[_i];
