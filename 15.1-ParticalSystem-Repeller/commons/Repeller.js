@@ -22,7 +22,8 @@ define(["require", "exports", "./PVector", "./Partical"], function (require, exp
         Repeller.prototype.repel = function (p) {
             var distance = PVector_1.PVector.sub(p.position, this.position);
             var d = distance.mag();
-            return distance.setMag(G * this.mass * p.mass / d / d);
+            var force = distance.setMag(G * this.mass * p.mass).div(d * d);
+            return force;
         };
         return Repeller;
     }(Partical_1.Partical));

@@ -26,8 +26,10 @@ export class PVector {
     }
 
     div(n: number) {
-        this.x /= n;
-        this.y /= n;
+        if (n != 0) {
+            this.x /= n;
+            this.y /= n;
+        }
         return this;
     }
 

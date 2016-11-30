@@ -11,7 +11,7 @@ define(["require", "exports", "./commons/PVector", "./commons/Painter", "./scrip
     repeller.g = Math.round(Math.random() * 255);
     repeller.b = Math.round(Math.random() * 255);
     repeller.size = Math.round(Math.random() * 5) * 2;
-    repeller.mass = 100;
+    repeller.mass = 10;
     canvas.onclick = function (ev) {
         var position = new PVector_1.PVector(ev.layerX / scale, ev.layerY / scale);
         var s = new ParticalSystem_1.ParticalSystem(canvas, position, painter);

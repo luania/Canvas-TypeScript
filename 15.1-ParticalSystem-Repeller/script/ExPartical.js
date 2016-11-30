@@ -16,7 +16,11 @@ define(["require", "exports", "../commons/Partical"], function (require, exports
             return _this;
         }
         ExPartical.prototype.display = function (painter) {
-            painter.drawCircular(this.position, this.size, "rgba(" + this.r + "," + this.g + "," + this.b + ", " + this.lifeSpan / 255 + ")");
+            var grd = painter.ctx.createRadialGradient(this.position.x, this.position.y, 0, this.position.x, this.position.y, this.size);
+            grd.addColorStop(0.000, "rgba(255,0,0," + this.lifeSpan / 510 + ")");
+            grd.addColorStop(0.3, "rgba(255,0,0," + this.lifeSpan / 765 + ")");
+            grd.addColorStop(1.0, "rgba(255,0,0,0)");
+            painter.drawCircular(this.position, this.size, grd);
         };
         return ExPartical;
     }(Partical_1.Partical));

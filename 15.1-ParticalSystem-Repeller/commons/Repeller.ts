@@ -21,6 +21,7 @@ export class Repeller extends Partical {
     repel(p: Partical) {
         let distance = PVector.sub(p.position, this.position);
         let d = distance.mag();
-        return distance.setMag(G * this.mass * p.mass / d / d);
+        let force = distance.setMag(G * this.mass * p.mass).div(d * d);
+        return force;
     }
 }

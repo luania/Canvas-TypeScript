@@ -18,16 +18,16 @@ export class ParticalSystem {
     }
 
     emit() {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 50; i++) {
             let p = new ExPartical();
             p.position = PVector.copy(this.originPosition);
-            p.velocity = new PVector((Math.random() - 0.5) * 5, (Math.random() - 0.5) * 5);
+            p.velocity = new PVector(this.getNumberInNormalDistribution(0, 1), this.getNumberInNormalDistribution(1, 2) - 3);
             p.lifeSpan = Math.random() * 100;
             p.r = Math.round(Math.random() * 255);
             p.g = Math.round(Math.random() * 255);
             p.b = Math.round(Math.random() * 255);
             p.size = Math.round(Math.random() * 5) * 3;
-            p.mass = 2000 + Math.random() * 2000;
+            p.mass = 2000 + Math.random() * 2000 + 1000;
             this.particals.push(p);
         }
     }
@@ -41,9 +41,9 @@ export class ParticalSystem {
         }
     }
 
-    draw() {
+    applyRepeller(r: Repeller) {
         for (let p of this.particals) {
-            p.display(this.painter);
+            p.applyForce(r.repel(p));
         }
     }
 
@@ -53,9 +53,21 @@ export class ParticalSystem {
         }
     }
 
-    applyRepeller(r: Repeller) {
+    draw() {
         for (let p of this.particals) {
-            p.applyForce(r.repel(p));
+            p.display(this.painter);
         }
+    }
+
+    getNumberInNormalDistribution(mean, std_dev) {
+        return mean + (this.uniform2NormalDistribution() * std_dev);
+    }
+
+    uniform2NormalDistribution() {
+        let sum = 0;
+        for (let i = 0; i < 12; i++) {
+            sum = sum + Math.random();
+        }
+        return sum - 6;
     }
 }

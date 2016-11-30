@@ -17,7 +17,7 @@ repeller.r = Math.round(Math.random() * 255);
 repeller.g = Math.round(Math.random() * 255);
 repeller.b = Math.round(Math.random() * 255);
 repeller.size = Math.round(Math.random() * 5) * 2;
-repeller.mass = 100;
+repeller.mass = 10;
 
 canvas.onclick = function(ev: MouseEvent) {
     let position = new PVector(ev.layerX / scale, ev.layerY / scale);
@@ -28,7 +28,6 @@ canvas.onmousemove = function(ev: MouseEvent) {
     repeller.position.x = ev.layerX / scale;
     repeller.position.y = ev.layerY / scale;
 }
-
 
 function emit() {
     for (let s of systems) {

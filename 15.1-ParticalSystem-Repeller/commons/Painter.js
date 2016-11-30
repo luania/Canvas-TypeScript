@@ -7,6 +7,8 @@ define(["require", "exports"], function (require, exports) {
         }
         Painter.prototype.clearCanvas = function () {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.ctx.fillStyle = "rgb(0,0,0)";
+            this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         };
         Painter.prototype.drawCircular = function (position, size, color) {
             this.ctx.fillStyle = color;

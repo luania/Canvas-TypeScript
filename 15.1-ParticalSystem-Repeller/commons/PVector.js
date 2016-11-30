@@ -21,8 +21,10 @@ define(["require", "exports", "./PolarVector"], function (require, exports, Pola
             return this;
         };
         PVector.prototype.div = function (n) {
-            this.x /= n;
-            this.y /= n;
+            if (n != 0) {
+                this.x /= n;
+                this.y /= n;
+            }
             return this;
         };
         PVector.prototype.mag = function () {
